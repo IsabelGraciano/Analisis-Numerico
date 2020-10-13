@@ -1,0 +1,57 @@
+// author Valeria
+// Multiple Roots
+
+Read x0, tolerance, iterations
+
+resultf = f(x0)
+resultf' = f'(x0)
+resultf'' = f''(x0)
+i = 0
+
+//Method data input control
+if (iterations < 1) {
+	print "Iterations must be greater than 0"
+end_if
+if (resultf == 0)
+	print x0  " Its a root"
+end_if
+
+//First iteration (iteration 0)
+print "Iter: " i
+print "x0: " x0
+print "f(xi): " f(x0)
+print "E: "
+i = i + 1
+
+xi = x0 - ((resultf * resultf1) / (resultf1^2) - (resultf * resultf2)))
+//Loop start
+while (resultf != 0 and i <= iterations and |xi - x0| > tolerance) 
+	error = |xi - x0|
+        x0 = xi
+        resultf = f(x0)
+        resultf' = f'(x0)
+        resultf'' = f''(x0)
+        xi = x0 - ((resultf * resultf1) / (resultf1^2) - (resultf * resultf2)));
+
+        print "Iter: " i
+        print "xi: " x0
+        print "f(xi): " resultf
+        print "E: " error
+        i = i + 1
+end_while
+
+//Method data output control
+if (resultf == 0) 
+	print "An approximation of the root was found in " + (xi));
+else if (i > iterations) 
+         print "Iteration limit reached"
+else if (Math.abs(xi - x0) < tolerance) 
+         print "The maximum tolerance permitted " (tolerance) ". In the iteration " (i) " the maximum tolerance was reached " |xi - x0|
+         print "Data in the last iteration");
+         print "Iteration " (i - 1)
+         print "x0= " x0
+         print "f(x0)= " f(x0)
+         print "E= " |xi - x0|
+     end_if
+end_if
+

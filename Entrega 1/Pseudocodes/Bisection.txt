@@ -1,0 +1,72 @@
+// author Valeria
+// Bisection Method
+
+
+Read a, b, iterations, tolerance
+
+x0 = 0
+y0 = 0
+i = 1
+xm = (a + b) / 2
+result = function(xm)
+
+//Method data input control
+if (iterations < 1) 
+	imprime "Iterations must be greater than 0"
+end_if
+if (result == 0) 
+	print xm " Its a root"
+end_if
+if (function(a) * function(b) > 0) 
+	print "There is no root in this interval"
+end_if
+
+//First iteration
+print "Iter: " i
+print "a: " a
+print "xm: " xm
+print "b: " b
+print "function(xm): " function(xm)
+print "E: "
+i = i + 1
+
+
+//Loop start
+while (result != 0 and i <= iterations and |x0 - xm| > tolerance)
+	print "Iter: "  i
+	if (result * function(a) < 0)
+        	a = a
+                b = xm
+        else
+                b = b
+                a = xm
+        end_if
+
+        x0 = xm
+        y0 = result
+        xm = (a + b) / 2
+        result = function(xm)
+        i= i + 1
+        print "a: " a
+        print "xm: " xm
+        print "b: " b
+        print "function(xm): " function(xm)
+        print "E: " |x0 - xm|
+end_while
+
+//Method data output control
+if (result == 0) 
+	print "An approximation of the root was found in " xm
+else if (i > iterations) 
+	print "Iteration limit reached"
+else if (|x0 - xm| < tolerance) 
+	print "The maximum tolerance permitted " (tolerance) + ". In the iteration " + (i) + " the maximum tolerance was reached " |x0 - xm|
+        print "Data in the last iteration"
+        print "Iteration " (i-1)
+        print "xm= " xm
+        print "function(xm)= " function(xm)
+        print "E= " |x0 - xm|
+     end_if
+end_if
+
+
