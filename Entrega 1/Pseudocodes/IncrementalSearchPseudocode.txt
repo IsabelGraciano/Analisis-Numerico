@@ -1,0 +1,32 @@
+incrementalSearch()
+    read x0, increase, iteration
+    fx0= f(x0)
+
+    for i = x0 to iteration
+        evaluateFunction
+        if value = 0
+            output i is a root of the function
+        end if 
+        else 
+            if value < 0 
+                negative = true 
+                valuepositive = i 
+            end if
+            if value > 0 
+                positive = true 
+                valuenegative
+            end if
+            if i != x0 
+                if negative = true and positive = true 
+                    if valuenegative<valuepositive
+                        output there is a root between valuenegative and valuepositive
+                    else 
+                        output there is a root between valuepositive and valuenegative
+                    negative and positive = false
+                    end else 
+                    end if
+                end if 
+            end if 
+        end else 
+    end for
+end incrementalSearch

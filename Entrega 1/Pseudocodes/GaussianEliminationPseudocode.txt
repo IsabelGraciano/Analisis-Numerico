@@ -1,0 +1,20 @@
+gaussian (n, matrix)
+    for k=1 to n 
+        for i=k+1 to n+1
+            multiplier = matrix[i-1][k-1]/matrix[k-1][k-1]
+            for j=k to n+2 
+                matrix[i-1][j-1] = matrix[i-1][j-1] - multiplier*matrix[k-1][j-1]
+            end for 
+            output multipliers i and k
+        end for 
+    end for 
+
+    define array x with size n
+    for i=n to 0
+        define sum =0
+        for p=i+1 to n 
+            sum = sum + matrix[i-1][p-1]*x[p-1]
+        end for 
+        x[i-1] = (matrix[i-1][n]-sum)/matrix[i-1][i-1]
+    end for
+end gaussian 
