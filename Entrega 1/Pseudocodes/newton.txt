@@ -1,0 +1,10 @@
+    newton(double x) {
+        xi = x - (evaluateF(x) / evaluateFDerived(x));
+        if (abs(xi - x) < tolerance || nMaxCounter == nMax) {
+            print("The root reached was " + xi);
+            return xi;
+        } else {
+            nMaxCounter++;
+            return newton(xi);
+        }
+    }

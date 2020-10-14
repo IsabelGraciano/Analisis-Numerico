@@ -1,0 +1,26 @@
+fakeRule( a, b) {
+        aEvaluated = evaluateF(a);
+        bEvaluated = evaluateF(b);
+        r = ((a * bEvaluated) - (b * aEvaluated)) / (bEvaluated - aEvaluated);
+        rEvaluated = evaluateF(r);
+        if (rEvaluated * aEvaluated < 0) {
+            if (abs(r - b) < tolerance || nMaxCounter == nMax) {
+                print("The root reached was " + r);
+                return r;
+            } else {
+                nMaxCounter++;
+                return fakeRule(a, r);
+            }
+        } else if (rEvaluated * bEvaluated < 0) {
+            if (abs(r - a) < tolerance || nMaxCounter == nMax {
+                print("The root reached was " + r);
+                return r;
+            } else {
+                nMaxCounter++;
+                return fakeRule(r, b);
+            }
+        } else {
+            print("There isn't sign change");
+            return 0;
+        }
+    }

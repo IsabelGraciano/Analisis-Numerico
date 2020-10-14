@@ -1,0 +1,11 @@
+secant(x, xPrev) {
+        xEvaluated = evaluateF(x);
+        xi = x - (xEvaluated * (x - xPrev) / (xEvaluated - evaluateF(xPrev)));
+        if (abs(xi - x) < tolerance || nMaxCounter == nMax) {
+					print("The root reached was " + xi);
+            return xi;
+        } else {
+            nMaxCounter++;
+            return secant(xi, x);
+        }
+    }

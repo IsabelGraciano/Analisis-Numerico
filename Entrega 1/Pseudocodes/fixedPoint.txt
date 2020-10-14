@@ -1,0 +1,10 @@
+fixedPoint(x) {
+        xi = evaluateG(x);
+        if (abs(xi - x) < tolerance || nMaxCounter == nMax) {
+            print("The root reached was " + xi);
+            return xi;
+        } else {
+            nMaxCounter++;
+            return fixedPoint(xi);
+        }
+    }

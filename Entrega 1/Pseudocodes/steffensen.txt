@@ -1,0 +1,10 @@
+steffensen(x) {
+        xEvaluated = evaluateF(x);
+        xi = (x - xEvaluated^2) / (evaluateF(x + xEvaluated) - xEvaluated));
+        if (abs(xi - x) < tolerance || nMaxCounter == nMax) {							    print("The root reached was " + xi);
+            return xi;
+        } else {
+            nMaxCounter++;
+            return steffensen(xi);
+        }
+    }
