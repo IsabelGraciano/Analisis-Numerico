@@ -1,0 +1,28 @@
+tridiagonalGaussianElimination([][] matrix) {
+    multiplier;
+    rowA = 1;
+    colA = 0;
+    for (int i = 0; i < matrix.length - 1; i++) {
+        multiplier = matrix[rowA][colA] / matrix[rowA - 1][colA];
+        matrix[rowA][colA + 1] -= multiplier * matrix[rowA - 1][colA + 1];
+        matrix[rowA][matrix.length - 1] -= multiplier * matrix[rowA - 1][matrix.length - 1];
+        matrix[rowA][colA] = 0;
+        rowA++;
+        colA++;
+    }
+    regressiveSubstitution(matrix);
+    return matrix;
+}
+
+regressiveSubstitution([][] matrix) {
+    n = matrix.length;
+    [] answers = [n];		// definir el tamaño del arreglo de respuestas
+    for (i = n; i > 0; i--) {
+        ctrl = 0;
+        for (p = i + 1; p <= n; p++) {
+            ctrl += matrix[i - 1][p - 1] * answers[p - 1];
+        }
+        answers[i - 1] = (matrix[i - 1][n] - ctrl) / matrix[i - 1][i - 1];
+        print("x" + i + " = " + answers[i - 1]+ “/n”);
+    }
+}

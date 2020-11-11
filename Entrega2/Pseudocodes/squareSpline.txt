@@ -1,0 +1,35 @@
+squareSpline([] x) {
+    [][] matrix = [3 * (x.length - 1)][3 * (x.length - 1)];
+    countPair = 0;
+    for (i = 0; i < x.length; i++) {
+        matrix[i][countPair] = x[I]^2;
+        matrix[i][countPair + 1] = x[i];
+        matrix[i][countPair + 2] = 1;
+        if (i != 0) {
+            countPair += 3;
+        }
+    }
+    countPair = 0;
+    count = x.length; 
+    for (i = 1; i < x.length - 1; i++) {
+        matrix[count][countPair] = x[I]^2;
+        matrix[count][countPair + 1] = x[i];
+        matrix[count][countPair + 2] = 1;
+        matrix[count][countPair + 3] = -x[I]^2;
+        matrix[count][countPair + 4] = -x[i];
+        matrix[count][countPair + 5] = -1;
+        countPair += 3;
+        count++;
+    }
+    countPair = 0;
+    for (i = 1; i < x.length - 1; i++) {
+        matrix[count][countPair] = 2 * x[i];
+        matrix[count][countPair + 1] = 1;
+        matrix[count][countPair + 3] = -2 * x[i];
+        matrix[count][countPair + 4] = -1;
+        countPair += 3;
+        count++;
+    }
+    matrix[count][0] = 2;
+    return matrix;
+}
