@@ -1,6 +1,5 @@
-
 import math
-import numpy as np
+import numpy as np 
 #Author Valeria
 
 def jacobi(A, b, t, iter,x0):
@@ -10,26 +9,32 @@ def jacobi(A, b, t, iter,x0):
         print("A no es una matriz cuadrada.")
         return 0
     else:
-        x = [n]
+        x = []
+        for i in range(n):
+            x.append(i)
         T = []
         for i in range(n):
             T.append([0]*n)
         C = []
+        for i in range(n):
+            C.append(i)
         aux = 0
         cont = 0
         E = t + 1
         iteration = 1
         while (E > t and cont <= iter):
-            print("iter: " , iteration)
-            E = 0;
-            for i in range(0,n):
-                suma = 0
-                for j in range(0,n):
+            print("\niter: " , iteration)
+            E = 0
+            for i in range(n):
+                sum = 0
+                for j in range(n):
                     if (i != j):
-                        suma = suma + A[i][j] * x0[j]
+                        sum = sum + A[i][j] * x0[j]
                         T[i][j] = -A[i][j] / A[i][i]
-                C.append(b[i] / A[i][i])
-                x.append((b[i] - suma) / A[i][i])
+                        C[i] = b[i] / A[i][i]
+                    
+                
+                x[i] = (b[i] - sum) / A[i][i]
                 aux = x[i] - x0[i]
                 E = E + math.pow(aux, 2)
             
@@ -39,26 +44,27 @@ def jacobi(A, b, t, iter,x0):
                 x0[i] = x[i]
                 print("x" , (i + 1) , ": " , x0[i])
             
-            print("\nT: ")
-            for i in range(0,n):
-                for j in range(0,n):
-                    print(T[i][j] , end="      ")
-                
-                print(" ")
-            
-            print("C: ")
-            for i in range(0,n):
-                print(C[i] , end= "      ")
-            print(" ")
-            print(" ")
-            
-            values, normalized_eigenvectors = np.linalg.eig(T) # T es la matriz
-            spectral_radius = max(abs(values))
-            print("Spectral Radius: ", spectral_radius)
-
-            iteration = iteration + 1 
+            print("")
+            iteration = iteration + 1
             cont = cont + 1
         
+        print("\nT: ")
+        for i in range(0,n):
+            for j in range(0,n):
+                print(T[i][j] , end="      ")
+            
+            print(" ")
+            
+        print("\nC: ")
+        for i in range(0,n):
+            print(C[i] , end= "      ")
+        print(" ")
+        print(" ")
+            
+        values, normalized_eigenvectors = np.linalg.eig(T) # T es la matriz
+        spectral_radius = max(abs(values))
+        print("Spectral Radius: ", spectral_radius)
+
         if (E < t):
             return x
         else:
@@ -74,4 +80,3 @@ x0 = [0, 0, 0, 0]
 t = math.pow(10, -7)
 iter = 100
 jacobi(A, b, t, iter, x0)
-
