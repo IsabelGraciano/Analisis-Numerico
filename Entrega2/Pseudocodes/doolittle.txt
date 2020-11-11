@@ -1,0 +1,29 @@
+doolittle(a,b,n)
+    define L,U 
+
+    loop from 1 to n +1
+        sum=0
+        loop from 0 to k+1
+            summ = summ + (L[k - 1][p] * U[p][k - 1])
+            U[k - 1][k - 1] = (A[k - 1][k - 1] - summ) / L[k - 1][k - 1]
+        end loop 
+
+        loop from k+1 to n+1 
+            sum=0 
+            loop from 0 to k-1 
+                summ = 0
+                summ = summ + (L[k - 1][p] * U[p][j - 1])
+            end loop
+            U[k - 1][j - 1] = (A[k - 1][j - 1] - summ) / L[k - 1][k - 1]
+        end loop
+
+        loop from k+1 to n+1
+            sum=0
+            loop from 0 to k-1 
+                summ = summ + ((L[i - 1][p]) * (U[p][k - 1]))
+            end loop 
+            L[i - 1][k - 1] = (A[i - 1][k - 1] - summ) / U[k - 1][k - 1]
+        end loop 
+    end loop 
+    z= RegressiveSubstitution(L)
+    x= ProgressiveSubstitution(U)

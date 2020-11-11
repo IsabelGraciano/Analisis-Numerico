@@ -1,0 +1,29 @@
+Crout(a,b)
+    define m,n=sizze(a)
+    if m!=n 
+        print "can't use this method"
+    else 
+        define L, U, s1, s2
+
+        loop from 1 to n+1 
+            loop from 0 to n 
+                L(i,0)=a(i,0)
+                U(i,i)=1
+            end loop
+            loop from 1 to n 
+                U(0,j)=a(0,j)/L(0,0)
+            end loop 
+            loop from 1 to n 
+                loop from k to n 
+                    loop from 0 to k
+                        s1 +== L(i,r)*U(r,k)
+                    end loop 
+                    L(i,k)=a(i,k)-s1 
+                    s1=0 
+                end loop 
+                loop from k+1 to n 
+                    loop from k+1 to n 
+                        s2 += L(k,r)*U(r,j)
+                    end loop 
+                    U(k,j) = (a(k,j)-s2) / l(k,k)
+                    s2=0

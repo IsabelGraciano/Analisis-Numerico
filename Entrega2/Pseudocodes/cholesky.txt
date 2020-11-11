@@ -1,0 +1,32 @@
+cholesky(a,b,n)
+    define L,U 
+
+    loop from 0 to n 
+        loop from 0 to n 
+        if i<j 
+            U(i,j) = infinite 
+            L(i,j) = 0
+        else if i>j 
+            L(i,j) = infinite 
+            U(i,j) = 0
+        else if i=j 
+            L(i,j) = infinite
+            U(i,j) ) infinite
+    end loop 
+
+    loop from 1 to n+1
+        sum = 0
+        loop from 0 to k-1
+            sum = L(k-1,p) * U(p)(k-1)
+        end loop 
+        U(k-1)(k-1) = square(A(k-1)(k-1)-sum)
+        L(k-1)(k-1)=U(k-1)(k-1)
+
+        loop from k+1 to n+1
+            sum=0
+            loop from 0 to k-1
+                sum=L(k-1,p)(*U(p,i-1))
+            U(k-1)(i-1)=(A(k-1,i-1)-sum)/L(k-1,k-1)
+        
+        z= RegressiveSubstitution(L)
+        x= ProgressiveSubstitution(U)
