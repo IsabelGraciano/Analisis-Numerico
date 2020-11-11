@@ -1,0 +1,53 @@
+Gaussian elimination:
+    for k = 1,..., n-1
+        find ik >= k such that |aik| = maxk <= i <= n |aik|.
+        if ik > k, interchange akj <-> aikj for j=k,...,n.
+            for i = k+1,...,n
+                aik = aik/akk
+                for j = k+1,...,n
+                aij = aij + aik*akj
+            endFor
+        endIf
+    endFor
+
+
+First step:
+    for k = 1,...,n-1
+        if ik > k, interchange, bk<->bik
+            for i = k+1,...,n
+                bi = bi + aik*bk
+            endFor
+        endIf
+    endFor
+    for l = 1,...,n-1
+        if il > l, interchange, bl<->blk
+    answersi = l
+    endFor
+
+Regressive substitution:
+    bn =  bn/ann
+    for i = n-1,...1
+        for j = i+1,...,n
+            bi = (bi - aij*bj)/aii
+        endFor
+    endFor
+
+
+Vandermonde:
+    read x, y
+    ab = []
+    expo = n - 1
+    for i = 0 to n:
+        for j = 0 to n:
+            if (j == (n)):
+                ab[i][j] = y[i]
+            else:
+                ab[i][j] = math.pow(x[i], expo)
+                expo= expo -1
+            endIf
+        endFor
+        expo = n - 1;
+    endFor
+
+    print ab
+    Gaussian elimination(ab)

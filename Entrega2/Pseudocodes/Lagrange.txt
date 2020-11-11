@@ -1,0 +1,16 @@
+Read x,y,n
+    aux = []
+    den = 0
+    mul = 1
+    for i = 0 to n:
+        print ("L" , i , "= "
+        for j = 0 to n:
+            if(i!=j):
+                den = (x[i]-x[j])
+                mul=mul*den
+                print "(x - " x[j]  ")"
+            endIf
+        endFor
+        print ((1/mul)*y[i])
+        mul=1
+    endFor
