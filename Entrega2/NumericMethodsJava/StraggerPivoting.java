@@ -6,10 +6,10 @@ public class StraggerPivoting {
 
     static double[][] ab
             = {
-                {4, -1, 0, 3, 1},
-                {1, 15.5, 3, 8, 1},
-                {0, -1.3, -4, 1.1, 1},
-                {14, 5, -2, 30, 1}
+                {2, -1, 0, 3, 1},
+                {1, 0.5, 3, 8, 1},
+                {0, 13, -2, 11, 1},
+                {14, 5, -2, 3, 1}
             };
 
     static int n = 4;
@@ -40,7 +40,7 @@ public class StraggerPivoting {
         double[] relativeValues = new double[ab.length];
         double largest = Math.abs(ab[x - 1][x - 1]);
         //I'll find the largest number in the column with it's row
-        for (int i = 0; i < ab.length; i++) {
+        for (int i = x-1; i < ab.length; i++) {
             double firstElement = Math.abs(ab[i][x - 1]);
             for (int j = x - 1; j < n; j++) {
                 double aux = Math.abs(ab[i][j]);
@@ -64,8 +64,6 @@ public class StraggerPivoting {
                 index = i;
             }
         }
-
-        System.out.println("---" + largestRelative + index);
 
         swapRows(index, x, largestRelative);
     }
