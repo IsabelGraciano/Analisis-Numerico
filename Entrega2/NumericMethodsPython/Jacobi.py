@@ -1,6 +1,6 @@
 
 import math
-
+import numpy as np
 #Author Valeria
 
 def jacobi(A, b, t, iter,x0):
@@ -39,7 +39,7 @@ def jacobi(A, b, t, iter,x0):
                 x0[i] = x[i]
                 print("x" , (i + 1) , ": " , x0[i])
             
-            print("T: ")
+            print("\nT: ")
             for i in range(0,n):
                 for j in range(0,n):
                     print(T[i][j] , end="      ")
@@ -51,6 +51,11 @@ def jacobi(A, b, t, iter,x0):
                 print(C[i] , end= "      ")
             print(" ")
             print(" ")
+            
+            values, normalized_eigenvectors = np.linalg.eig(T) # T es la matriz
+            spectral_radius = max(abs(values))
+            print("Spectral Radius: ", spectral_radius)
+
             iteration = iteration + 1 
             cont = cont + 1
         

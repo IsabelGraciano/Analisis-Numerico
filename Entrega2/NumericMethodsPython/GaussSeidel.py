@@ -1,6 +1,6 @@
 
 import math
-
+import numpy as np
 #Author Valeria
 
 def gaussSeidel(A, b, t, iter, x0) :
@@ -53,3 +53,15 @@ t = math.pow(10, -7)
 iter = 100
 gaussSeidel(A, b, t, iter, x0)
 
+D = np.diag(np.diag(A))
+U = -np.triu(A,1)
+L = -np.tril(A,-1)
+T = (np.dot((np.linalg.inv(D-L)), U))
+C = (np.dot((np.linalg.inv(D-L)), b))
+print("T: ")
+print(T)
+print("C:")
+print(C)
+values, normalized_eigenvectors = np.linalg.eig(T) # T es la matriz
+spectral_radius = max(abs(values))
+print("\nSpectral Radius: ", spectral_radius)

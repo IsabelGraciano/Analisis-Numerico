@@ -1,6 +1,6 @@
 
 import math
-
+import numpy as np
 #Author Valeria
 
 def sor(A, b, tol, ite, x0, lam):
@@ -52,4 +52,18 @@ b = [1, 1, 1, 1]
 x0 = [0, 0, 0, 0]
 t = math.pow(10, -7)
 iter = 100
-sor(A, b, t, iter, x0, 1.5)
+w=1.5
+sor(A, b, t, iter, x0, w)
+
+D = np.diag(np.diag(A))
+U = -np.triu(A,1)
+L = -np.tril(A,-1)
+T = (np.dot((np.linalg.inv(D-(w*L))), ((1-w)*D+(w*U))))
+C = (w*np.dot((np.linalg.inv(D-(w*L))), b))
+print("T: ")
+print(T)
+print("C:")
+print(C)
+values, normalized_eigenvectors = np.linalg.eig(T) # T es la matriz
+spectral_radius = max(abs(values))
+print("\nSpectral Radius: ", spectral_radius)
