@@ -1,0 +1,16 @@
+n = rows[A]
+for i=1 to n
+P[i]=i
+    for k=1 to n
+        p=0
+       for(i=k to n)
+            if |Aik| > p then p = |Aik|
+                k' = i
+            if p=0 then STOP "singular matrix"
+                exchange P[k] with P[K']
+           for i=1 to n
+                exchange Aki with Ak'i
+            for i=k+1 to n
+                 Aik = Aik/Akk
+                      for j=k+1 to n
+                           Aig = Aij - AikAkj
